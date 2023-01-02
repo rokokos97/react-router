@@ -3,15 +3,8 @@ import NavBar from './components/navBar';
 import {Route, Switch} from 'react-router-dom';
 import Home from './components/home';
 import Login from './components/login';
-// import Posts from './components/posts';
 import Dashboard from './components/dashboard';
-import Post from './components/post';
-import PostsList from './components/postsList';
-
-const posts = [
-  {id: 1, label: 'post 1'},
-  {id: 2, label: 'post 2'},
-  {id: 3, label: 'post 3'}];
+import Posts from './components/posts';
 const App =()=> {
   return (
     <>
@@ -22,13 +15,17 @@ const App =()=> {
         <Route path={'/login'} component={Login}/>
         <Route path={'/dashboard'} component={Dashboard}/>
         <Route
-          path={'/posts/:postId'}
-          render={(props)=><Post {...props} posts={posts}/>}
+          path={'/posts/:postId?'}
+          render={(props)=><Posts {...props} />}
         />
-        <Route
-          path={'/posts'}
-          render={(props)=><PostsList {...props} posts={posts}/>}
-        />
+        {/* <Route*/}
+        {/*  path={'/posts/:postId'}*/}
+        {/*  render={(props)=><Post {...props} posts={posts}/>}*/}
+        {/* />*/}
+        {/* <Route*/}
+        {/*  path={'/posts'}*/}
+        {/*  render={(props)=><PostsList {...props} posts={posts}/>}*/}
+        {/* />*/}
         {/* чтобы передать доп параметры в компонент или отобразить сразу JSX
         компонент необходимо вместо атрибута component использовать атрибут
         render
