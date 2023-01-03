@@ -1,10 +1,11 @@
 import React from 'react';
 import NavBar from './components/navBar';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import Home from './components/home';
 import Login from './components/login';
 import Dashboard from './components/dashboard';
 import Posts from './components/posts';
+import NotFound from './components/404';
 const App =()=> {
   return (
     <>
@@ -18,6 +19,9 @@ const App =()=> {
           path={'/posts/:postId?'}
           render={(props)=><Posts {...props} />}
         />
+        <Route path={'/404'} component={NotFound}/>
+        <Redirect from={'/admin'} to={'/dashboard'}/>
+        <Redirect to={'/404'}/>
         {/* <Route*/}
         {/*  path={'/posts/:postId'}*/}
         {/*  render={(props)=><Post {...props} posts={posts}/>}*/}
