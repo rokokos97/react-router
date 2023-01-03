@@ -6,7 +6,7 @@ import query from 'query-string';
 import _ from 'lodash';
 
 
-const Posts = ({match, location}) => {
+const Posts = ({match, location, history}) => {
   const search =query.parse(location.search);
   console.log(search.count);
   const postId = match.params.postId;
@@ -20,7 +20,7 @@ const Posts = ({match, location}) => {
   console.log(cropPosts);
   return <>
     {postId?
-        <Post {...{posts}} id={postId}/>:
+        <Post {...{posts}} id={postId} history={history}/>:
         <PostsList posts={cropPosts}/>}
   </>;
 };
@@ -28,5 +28,6 @@ const Posts = ({match, location}) => {
 Posts.propTypes = {
   location: PropTypes.object,
   match: PropTypes.object.isRequired,
+  history: PropTypes.object,
 };
 export default Posts;

@@ -6,6 +6,7 @@ import Login from './components/login';
 import Dashboard from './components/dashboard';
 import Posts from './components/posts';
 import NotFound from './components/404';
+import 'bootstrap/dist/css/bootstrap.css';
 const App =()=> {
   return (
     <>
