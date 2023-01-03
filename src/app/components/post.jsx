@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {useHistory} from 'react-router-dom';
 
 
 const Post = ({posts, id, history}) => {
+  const historyHooks = useHistory();
   const getPostById = (id) => {
     return posts.find((post)=>post.id.toString()===id);
   };
   const post = getPostById(id);
   const handelSave = () => {
-    history.replace('/posts');
+    historyHooks.replace('/posts');
   };
   const handelEdit = () => {
     history.push(`/posts`);
@@ -19,10 +21,10 @@ const Post = ({posts, id, history}) => {
         post?post.label:`Post with Id:${id} is not found`
       }</h3>
       <button
-        className={'btn btn-warning m-3'}
+        className={'btn btn-warning btn-lg m-1'}
         onClick={handelEdit}>Edit</button>
       <button
-        className={'btn btn-danger m-3'}
+        className={'btn btn-danger btn-lg m-1'}
         onClick={handelSave}>Save</button>
     </>
   );
