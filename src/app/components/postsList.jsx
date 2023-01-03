@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PostsList = ({posts}) => {
-  console.log(posts);
   return <>
     {
       posts.map((post)=><h3 key={post.id}>{post.label}</h3>)
